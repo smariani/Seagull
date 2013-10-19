@@ -28,5 +28,7 @@ class User extends AppModel {
 	    }
 	    return true;
 	}
+	
+	//COMMENTO DI PROVA PER IL COMMIMT
 
 }

@@ -32,6 +32,7 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+<<<<<<< HEAD
     //...
 
     public $components = array(
@@ -47,3 +48,6 @@ class AppController extends Controller {
     }
     //...
 }
+=======
+}
+>>>>>>> 7dad6f4b22f8bcb3cb9a650de5d562175a505fbc
