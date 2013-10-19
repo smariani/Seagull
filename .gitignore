@@ -8,6 +8,8 @@
 /build
 /dist
 /tags
+.gitignore
+/app/Config/core.php
 
 # OS generated files #
 ######################
