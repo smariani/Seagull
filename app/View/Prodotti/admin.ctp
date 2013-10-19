@@ -5,14 +5,14 @@
 	<th>Nome</th>
 	<th>Prezzo</th>
 	<th>Azioni</th>
-	<?php foreach($portate as $portata) : ?>
+	<?php foreach($prodotti as $prodotto) : ?>
 	<tr class="rigaTabella"> 
-		<td><?php echo $portata['Portata']['nome']; ?></td>
-		<td><?php echo $portata['Portata']['prezzo']; ?></td>
+		<td><?php echo $prodotto['Prodotto']['nome']; ?></td>
+		<td><?php echo $prodotto['Prodotto']['prezzo']; ?></td>
 		<td>
-			<button onclick="window.location = 'modifica/<?php echo $portata['Portata']['id'];?>'">modifica</button>
-			<button onclick="window.location = 'cancella/<?php echo $portata['Portata']['id'];?>'">cancella</button>
-			<button onclick="window.location = 'visualizza/<?php echo $portata['Portata']['id'];?>'">visualizza</button>
+			<button onclick="window.location = 'modifica/<?php echo $prodotto['Prodotto']['id'];?>'">modifica</button>
+			<button onclick="window.location = 'cancella/<?php echo $prodotto['Prodotto']['id'];?>'">cancella</button>
+			<button onclick="window.location = 'visualizza/<?php echo $prodotto['Prodotto']['id'];?>'">visualizza</button>
 		</td>
 	</tr>
 	<?php endforeach; ?>

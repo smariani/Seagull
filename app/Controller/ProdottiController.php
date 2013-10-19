@@ -6,15 +6,15 @@ class ProdottiController extends AppController{
 	}
 	
 	public function admin(){
-		$this->layout = 'seagull';
+		//$this->layout = 'seagull';
 		if ($this->Auth->user('role') === 'admin') {
-			$res = $this->Portata->find('all');
-			$this->set('portate', $res);
-			$this->set('messaggio', 'Trovate '.count($res).' portate');
+			$res = $this->Prodotto->find('all');
+			$this->set('prodotti', $res);
+			$this->set('messaggio', 'Trovati '.count($res).' prodotti');
 			$this->set('status', true);
 		} else {
 			$this->set('messaggio', 'Non sei autorizzato');
-			$this->set('portate', array());
+			$this->set('prodotti', array());
 			$this->set('status', false);
 		}
 	}
@@ -22,13 +22,13 @@ class ProdottiController extends AppController{
 	public function cuoco(){
 		$this->layout = 'seagull';
 		if ($this->Auth->user('role') === 'cuoco') {
-			$res = $this->Portata->find('all');
-			$this->set('portate', $res);
-			$this->set('messaggio', 'Trovate '.count($res).' portate');
+			$res = $this->Prodotto->find('all');
+			$this->set('prodotti', $res);
+			$this->set('messaggio', 'Trovati '.count($res).' prodotti');
 			$this->set('status', true);
 		} else {
 			$this->set('messaggio', 'Non sei autorizzato');
-			$this->set('portate', array());
+			$this->set('prodotti', array());
 			$this->set('status', false);
 		}
 	}
@@ -53,7 +53,7 @@ class ProdottiController extends AppController{
 				'nome' => $_POST['nome'],
 				'prezzo' => $_POST['prezzo']
 			);
-			$this->Portata->save($portata);
+			$this->Prodotto->save($portata);
 		}
 		if (isset($_POST['altro'])){
 			$this->render('aggiungi');
@@ -68,17 +68,17 @@ class ProdottiController extends AppController{
 			die("Non sei autorizzato ad aggiornare le portate");
 		}
 		if ($this->Auth->user('role') === 'admin') {
-			$res = $this->Portata->find('first', array(
+			$res = $this->Prodotto->find('first', array(
 				'conditions' => array(
 					'id' => $id
 				)
 			));
-			$this->set('portata', $res);
+			$this->set('prodotto', $res);
 			$this->set('messaggio', 'Modifica i campi');
 			$this->set('status', true);
 		} else {
 			$this->set('messaggio', 'Non sei autorizzato');
-			$this->set('portate', array());
+			$this->set('prodotti', array());
 			$this->set('status', false);
 		}
 	}
@@ -92,7 +92,7 @@ class ProdottiController extends AppController{
 			$id = $_POST["id"];
 			$nome = $_POST['nome'];
 			$prezzo = $_POST['prezzo'];
-			$this->Portata->query("
+			$this->Prodotto->query("
 				UPDATE portate
 				SET nome = '$nome', prezzo = '$prezzo'
 				WHERE id = '$id'
@@ -108,7 +108,7 @@ class ProdottiController extends AppController{
 			die("Non sei Autorizzato a cancellare");
 		}
 		$this->Portata->query("DELETE FROM portate WHERE id = $id");
-		$this->set('messaggio', 'portata eliminata');
+		$this->set('messaggio', 'prodotto eliminato');
 		$this->redirect($this->Auth->user('role'));
 	}
 	
@@ -118,7 +118,7 @@ class ProdottiController extends AppController{
 			die("Non sei autorizzato a visualizzare");
 		}
 		$portata = $this->Portata->findById($id);
-		$this->set('portata', $portata);
+		$this->set('prodotto', $portata);
 		$this->set('ruolo', $this->Auth->user('role'));
 		$this->set('status', true);
 	}
