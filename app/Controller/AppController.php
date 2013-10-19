@@ -33,6 +33,7 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 <<<<<<< HEAD
+<<<<<<< HEAD
     //...
 
     public $components = array(
@@ -47,6 +48,8 @@ class AppController extends Controller {
         $this->Auth->allow('index', 'view');
     }
     //...
+=======
+>>>>>>> 7dad6f4b22f8bcb3cb9a650de5d562175a505fbc
 }
 =======
 }
