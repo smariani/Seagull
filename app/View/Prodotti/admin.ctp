@@ -13,6 +13,7 @@
 			<button onclick="window.location = 'modifica/<?php echo $prodotto['Prodotto']['id'];?>'">modifica</button>
 			<button onclick="window.location = 'cancella/<?php echo $prodotto['Prodotto']['id'];?>'">cancella</button>
 			<button onclick="window.location = 'visualizza/<?php echo $prodotto['Prodotto']['id'];?>'">visualizza</button>
+			<button onclick="window.location = './<?php echo $prodotto['Prodotto']['id'];?>'">+</button>
 		</td>
 	</tr>
 	<?php endforeach; ?>

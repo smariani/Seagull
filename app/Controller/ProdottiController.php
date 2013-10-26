@@ -2,7 +2,8 @@
 class ProdottiController extends AppController{
 	
 	public function index(){
-		
+		$red = $this->Auth->user('role');
+		$this->redirect("./$red");		
 	}
 	
 	public function admin(){
@@ -93,7 +94,7 @@ class ProdottiController extends AppController{
 			$nome = $_POST['nome'];
 			$prezzo = $_POST['prezzo'];
 			$this->Prodotto->query("
-				UPDATE portate
+				UPDATE prodotti
 				SET nome = '$nome', prezzo = '$prezzo'
 				WHERE id = '$id'
 			");
@@ -107,7 +108,7 @@ class ProdottiController extends AppController{
 		if ($this->Auth->user('role') !== 'admin'){
 			die("Non sei Autorizzato a cancellare");
 		}
-		$this->Portata->query("DELETE FROM portate WHERE id = $id");
+		$this->Prodotto->query("DELETE FROM prodotti WHERE id = $id");
 		$this->set('messaggio', 'prodotto eliminato');
 		$this->redirect($this->Auth->user('role'));
 	}
@@ -117,10 +118,10 @@ class ProdottiController extends AppController{
 		if (in_array($this->Auth->user('role'),$autorizzazioni) === false){
 			die("Non sei autorizzato a visualizzare");
 		}
-		$portata = $this->Portata->findById($id);
+		$portata = $this->Prodotto->findById($id);
 		$this->set('prodotto', $portata);
 		$this->set('ruolo', $this->Auth->user('role'));
 		$this->set('status', true);
 	}
-
+	
 }
