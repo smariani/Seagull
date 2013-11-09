@@ -24,4 +24,14 @@ class OrdiniController extends AppController {
 			$this->Ordine->save($ordine);
 		}
 	}
+	
+	public function cancella($id = NULL){
+		$this->autoRender = false;
+		if ($this->Auth->user('role') !== 'admin'){
+			die("Non sei Autorizzato a cancellare");
+		}
+		$this->Ordine->query("DELETE FROM ordine WHERE id = $id");
+		$this->set('messaggio', 'ordine eliminato');
+		$this->redirect($this->Auth->user('role'));
+	}
 }
